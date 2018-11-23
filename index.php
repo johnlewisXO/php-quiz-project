@@ -22,7 +22,7 @@
 
 	// declared multi-dimensional array
 	// inner arrays had 4 options for input
-	$quizPieces = array(
+	$quiz = array(
 
 		array('quiz' => 'what is the name of the nuclear plant that was permanently shut down follwing the horrific nuclear meltdown in ukraine?', 
 		'moskovia', 
@@ -143,7 +143,7 @@
 
 	// implemented for loop for calculating number of correct answers
 
-	for ($input = 0; $input < count($quizPieces); $input++) { ?>
+	for ($input = 0; $input < count($quiz); $input++) { ?>
 	
 	 <!-- used a section as a container for array data  -->
 	<section class='box'>
@@ -152,7 +152,7 @@
 			</h2>
 			<p>
 				<!-- return quiz total answers answered with a paragraph tag -->
-				<?php echo $quizPieces[$input]['quiz']; ?>
+				<?php echo $quiz[$input]['quiz']; ?>
 			</p>
 			<section class='grid'>
 			<?php 
@@ -160,7 +160,7 @@
 			for ($n = $input*4; $n < ($input+1)*4; $n++) { 
 
 				?>
-				<input type='radio' name="<?php echo $input; ?>" value="<?php echo $x ?>" id="<?php echo $n ?>"><label class="option" for="<?php echo $n ?>"><?php echo $quizPieces[$input][$x] ?></label>
+				<input type='radio' name="<?php echo $input; ?>" value="<?php echo $x ?>" id="<?php echo $n ?>"><label class="option" for="<?php echo $n ?>"><?php echo $quiz[$input][$x] ?></label>
 			<?php
 					$x++; 
 		
