@@ -1,8 +1,9 @@
 
 body {
     background: linear-gradient(75deg, lightblue, rgb(101, 253, 215), #555);
-    width: 98%;
-    border: 5px solid #888;
+    width: 100%;
+    overflow-x: hidden;
+    margin: 0;
 }
 
 h1 {
@@ -14,7 +15,7 @@ h1 {
 }
   
 h2 {
-    padding: 0 0 0.5em 0;
+    text-align: center;
     margin: 0;
     box-shadow: 0 2px 3px -3px #000;
     color: #333;
@@ -30,8 +31,9 @@ footer {
     font-size: 1.3em;
     background: linear-gradient(105deg, lightblue, rgb(101, 253, 215), #555);
 }
+
 img {
-    margin: 0 0 0 28%;
+    width: 100%;
     opacity: 0.7;
 }
 
@@ -56,11 +58,7 @@ section p {
 }
 
 .submit {
-    margin: 70px 0 20px 40%;
-}
-
-.submit input {
-    margin: 20px 0 20px 10%;
+    text-align: center;
 }
 
 .grid {
