@@ -1,186 +1,290 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="css/styles.css">
-	<title>Quiz</title>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>My PHP-Quiz</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" media="screen" href="css/styles.css"/>
+	<script src="main.js"></script>
+
 </head>
-<body id="test">
-	<header class="header">
+<body>
+
+ 	<header>
 		<h1>Generalized!</h1>
-		<p>Take this general knowledge quiz to test yourself on current and historical world events.</p>
-		<img src="img/quizTime.png" alt="">
-	
+
+		<p>Take this general knowledge quiz to test yourself.</p>
+
+		<img src="img/quiz.gif" alt="">
 	</header>
 
-	<form action='results.php' method="post">
+	<?php 
 
+	session_start();
 
-<?php
-
-	// declared multi-dimensional array
-	// inner arrays had 4 options for input
-	$quiz = array(
-
-		array('quiz' => 'what is the name of the nuclear plant that was permanently shut down follwing the horrific nuclear meltdown in ukraine?', 
-		'moskovia', 
-		'milnerton', 
-		'chernobyl', 
-		'brussles'),
-
-		array('quiz' => 'What is the capital of Czech Republic?', 
-		'ostrava', 
-		'prague', 
-		'pilsen', 
-		'olomouc'),
-
-		array('quiz' => 'What gets bigger the more you take away from it , and smaller the more you put in it?', 
-		'ocean', 
-		'sky', 'grave', 
-		'house'),
-
-		array('quiz' => 'Who is the monarch of the united kingdom?', 
-		'Queen Elizabeth', 
-		'Prince Harry', 
-		'Prince William', 
-		'Evelyn Rothschild'),
-
-		array('quiz' => 'What is the value of pi, correct to 4 decimal places?', '3.1435', 
-		'3.4126', 
-		'3.1479', 
-		'3.1415'),
-
-		array('quiz' => 'Write the scientific name for lie detector which is used by the police for proving lies?', 
-		'polygraph', 
-		'liargraph', 'xylograph', 
-		'mentagraph'),
-
-		array('quiz' => 'What is the name of military intelligence organization of israel?', 
-		'mi6', 
-		'fsb', 
-		'mossad', 
-		'nypd'),
-
-		array('quiz' => 'Which virus causes bleeding in the body due to the destruction of blood vessels?', 
-		'ebola', 
-		'tb', 
-		'hiv', 
-		'swine flu'),
-
-		array('quiz' => 'Which woman is selected in us senate firstly?', 'michelle obama', 
-		'hillary rodham clinton', 
-		'ellen de generes', 
-		'oprah winfrey'),
-
-		array('quiz' => 'Which country has the world’s one-fourth oil reserve?', 'iran', 
-		'nigeria', 
-		'china', 
-		'saudi arabia'),
-
-		array('quiz' => 'Which is the biggest city of washington state?', 
-		'seattle', 
-		'denver', 
-		'california', 
-		'new york'),
-
-		array('quiz' => 'What is the date of world aids day?', 
-		'5 november', 
-		'18 july', 
-		'1 december', 
-		'23 april'),
-
-		array('quiz' => 'Who is the first black president of usa?', 
-		'will smith', 
-		'barack obama', 
-		'donald trump', 
-		'sean paul'),
-
-		array('quiz' => 'Which is the purest water of nature?', 
-		'rain water', 
-		'ocean water', 
-		'drain water', 
-		'tap water'),
-
-		array('quiz' => 'Name the pope who had visited most countries?', 
-		'pope escobar', 
-		'john paul 2', 
-		'jean baptiste', 'jerry lorenzo'),
-
-		array('quiz' => 'The next day of christmas commonly known as?', 
-		'fun day ', 
-		'new years day', 
-		'the best day', 
-		'boxing day'),
-
-		array('quiz' => 'Which holy scripture is the most translated in the world?', 'quran', 
-		'yellow pages', 
-		'book of hours', 
-		'bible'),
-
-		array('quiz' => 'Which is the largest consumer country of gold?', 
-		'england', 
-		'india', 
-		'south africa', 
-		'saudi arabia'),
-
-		array('quiz' => 'Who is the legendary keeper of the nba 6 rings title?', 'Jimmy Carter', 
-		'James LeBron', 
-		'Chris Bosch', 
-		'Michael Jordan'),
-
-		array('quiz' => 'How many planets are there in our solar system?', 
-		'9', 
-		'12', 
-		'10', 
-		'35')
-		
+	$questions = array(
+		1 => array(
+			'Question' => '1. CSS stands for',
+			'Answers' => array(
+				'A' => 'Computer Styled Sections',
+				'B' => 'Cascading Style Sheets',
+				'C' => 'Crazy Solid Shapes'
+			),
+			'CorrectAnswer' => 'B'
+		),
+		2 => array(
+			'Question' => '2. What is the Capital of the Philippines',
+			'Answers' => array(
+				'A' => 'Cebu City',
+				'B' => 'Davao City',
+				'C' => 'Manila City'
+			),
+			'CorrectAnswer' => 'C'
+		),
+		3 => array(
+			'Question' => '3. What is the Capital of the Czech Republic?',
+			'Answers' => array(
+				'A' => 'Brussels',
+				'B' => 'Prague',
+				'C' => 'Menova'
+			),
+			'CorrectAnswer' => 'B'
+		),
+		4 => array(
+			'Question' => '4. Who is the president of South Africa?',
+			'Answers' => array(
+				'A' => 'Thabo Mbeki',
+				'B' => 'Jacob Zuma',
+				'C' => 'Cyril Ramaphosa'
+			),
+			'CorrectAnswer' => 'C'
+		),
+		5 => array(
+			'Question' => '5. Which country holds 1/4 of the worlds oil reserves?',
+			'Answers' => array(
+				'A' => 'Iran',
+				'B' => 'Saudi Arabia',
+				'C' => 'China'
+			),
+			'CorrectAnswer' => 'B'
+		),
+		6 => array(
+			'Question' => '6. How many planets are there in our solar system?',
+			'Answers' => array(
+				'A' => '10',
+				'B' => '34',
+				'C' => '9'
+			),
+			'CorrectAnswer' => 'C'
+		),
+		7 => array(
+			'Question' => '7. What is the correct term used for the lie detector test used by law enforcement?',
+			'Answers' => array(
+				'A' => 'Polygraph',
+				'B' => 'Metagraph',
+				'C' => 'Xylograph'
+			),
+			'CorrectAnswer' => 'A'
+		),
+		8 => array(
+			'Question' => '8. Who is the record holder of the NBA 6 rings title?',
+			'Answers' => array(
+				'A' => 'Kyrie Irving',
+				'B' => 'James LeBron',
+				'C' => 'Michael Jordan'
+			),
+			'CorrectAnswer' => 'C'
+		),
+		9 => array(
+			'Question' => '9. Who invented the telephone?',
+			'Answers' => array(
+				'A' => 'Albert Einstein',
+				'B' => 'Alexander Graham Bell',
+				'C' => 'Charles Darwin'
+			),
+			'CorrectAnswer' => 'B'
+		),
+		10 => array(
+			'Question' => '10. What gets bigger the more you take away from it, and smaller the more you add to it?',
+			'Answers' => array(
+				'A' => 'Grave',
+				'B' => 'Sky',
+				'C' => 'Wall'
+			),
+			'CorrectAnswer' => 'A'
+		),
+		11 => array(
+			'Question' => '11. Who is the person responsible for creating Facebook?',
+			'Answers' => array(
+				'A' => 'Donald Trump',
+				'B' => 'Mark Zuckerberg',
+				'C' => 'Jim Parsons'
+			),
+			'CorrectAnswer' => 'B'
+		),
+		12 => array(
+			'Question' => '12. How many months in a year have 28 days?',
+			'Answers' => array(
+				'A' => '1',
+				'B' => '3',
+				'C' => '12'
+			),
+			'CorrectAnswer' => 'C'
+		),
+		13 => array(
+			'Question' => '13. What is heavier: a pound of feathers or a pound of stones?',
+			'Answers' => array(
+				'A' => 'The feathers',
+				'B' => 'The stones',
+				'C' => 'Exactly the same'
+			),
+			'CorrectAnswer' => 'C'
+		),
+		14 => array(
+			'Question' => '14. A farmer has twenty bananas and sells all of them except for seven. How many does he have left?',
+			'Answers' => array(
+				'A' => '7',
+				'B' => '13',
+				'C' => '0'
+			),
+			'CorrectAnswer' => 'A'
+		),
+		15 => array(
+			'Question' => '15. What breaks and never falls, and what falls and never breaks?',
+			'Answers' => array(
+				'A' => 'Day breaks and night falls',
+				'B' => 'Glass',
+				'C' => 'Sky'
+			),
+			'CorrectAnswer' => 'A'
+		),
+		16 => array(
+			'Question' => '16. Which country is the largest consumer of gold?',
+			'Answers' => array(
+				'A' => 'America',
+				'B' => 'England',
+				'C' => 'India'
+			),
+			'CorrectAnswer' => 'C'
+		),
+		17 => array(
+			'Question' => '17. Which holy scripture book is the most translated worldwide? ',
+			'Answers' => array(
+				'A' => 'Quran',
+				'B' => 'Bible',
+				'C' => 'Yellow Page'
+			),
+			'CorrectAnswer' => 'B'
+		),
+		18 => array(
+			'Question' => '18. What is the most stolen object of all time?',
+			'Answers' => array(
+				'A' => 'Bread',
+				'B' => 'Lighter',
+				'C' => 'Cellphone'
+			),
+			'CorrectAnswer' => 'B'
+		),
+		19 => array(
+			'Question' => '19. What is the popular nintendo game of the two plumber brothers?',
+			'Answers' => array(
+				'A' => 'Mario Bros',
+				'B' => 'Snow Bros',
+				'C' => 'Black bros'
+			),
+			'CorrectAnswer' => 'A'
+		),
+		20 => array(
+			'Question' => '20. What can be broken but cannot be held?',
+			'Answers' => array(
+				'A' => 'Glass',
+				'B' => 'Feelings',
+				'C' => 'Promise'
+			),
+			'CorrectAnswer' => 'C'
+		),
 	);
 
-?>
-<?php
+	if (isset($_POST['answers'])){
+		$answers = $_POST['answers']; // Get submitted answers.
+		$counter = '0';
 
-	// implemented for loop for calculating number of correct answers
+		// Checking the answers 
+		// $questionsno variable used for determining correct answer 
+		foreach ($questions as $questionsno => $value){
 
-	for ($input = 0; $input < count($quiz); $input++) { ?>
-	
-	 <!-- used a section as a container for array data  -->
-	<section class='box'>
-			<h2>
-				Question <span class="num"> <?php echo $input+1 ?> </span>
-			</h2>
-			<p>
-				<!-- return quiz total answers answered with a paragraph tag -->
-				<?php echo $quiz[$input]['quiz']; ?>
-			</p>
-			<section class='grid'>
-			<?php 
-				$x = 0;
-			for ($n = $input*4; $n < ($input+1)*4; $n++) { 
+			// echo the question
+			echo $value['Question'].'<br />';
 
-				?>
-				<input type='radio' name="<?php echo $input; ?>" value="<?php echo $x ?>" id="<?php echo $n ?>"><label class="option" for="<?php echo $n ?>"><?php echo $quiz[$input][$x] ?></label>
+			if ($answers[$questionsno] != $value['CorrectAnswer']){
+				echo 'You answered: <span style="color: red;">'.$value['Answers'][$answers[$questionsno]].'</span><br>'; // Replace style with a class
+				echo 'Correct answer: <span style="color: green;">'.$value['Answers'][$value['CorrectAnswer']].'</span>';
+			} else {
+				echo 'Correct answer: <span style="color: green;">'.$value['Answers'][$answers[$questionsno]].'</span><br>'; // Replace style with a class
+				echo 'You are correct: <span style="color: green;">'.$value['Answers'][$answers[$questionsno]].'</span>'; $counter++;
+
+			}
+
+			?> 
+
+		<section class="results"> 
 			<?php
-					$x++; 
+			// echo line break and horizontal breaks
+			echo '<br /><hr><br />'; 
+				if ($counter=="") { 
+					$counter='0';
+					$results = "Come on! Try harder!Your score: $counter/20"; 
+				} 
+				else { 
+						$results = "Your score: $counter/20"; 
+					}
+				}  ?>
+		</section>  
+			
+			<?php
+
+			// echo results
+			echo $results;
+
+	} else {  
+	?>
+	<section class="main">
+		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="quiz">
 		
-		} ?>
+			<!-- loop for determining correct or incorrect answer -->
+			<?php foreach ($questions as $questionsno => $value){ ?>
+			<section class="box" >
+				<h3><?php echo $value['Question']; ?></h3>
+			
+				<?php 
+					foreach ($value['Answers'] as $letter => $answer){ 
+					$label= 'question-'.$questionsno.'-answers-'.$letter;
+				?>
 
-			<!-- radio input used for chosing options in the quiz array -->
-			<input type="radio" name="<?php echo $input; ?>" value="4" checked="checked">
+				<section class="block">
+					<div class="answers">
+						<input type="radio" name="answers[<?php echo $questionsno; ?>]" id="<?php echo $label; ?>" value="<?php echo $letter; ?>" required/>
+						<label class="option" for="<?php echo $label; ?>"><?php echo $letter; ?>) <?php echo $answer; ?> </label>
+					</div>
+				</section>
+				<?php } ?>
 			</section>
+			
+
+			<?php } ?>
 		</section>
+			<input class="submit" type="submit" value="Submit Quiz" required/>
 
-	<?php }
-?>
-		<!-- submit input used for results submission in the array -->
-	<section class="submit">
-		<h2>Submit Your Results!</h2>
-			<input type="submit" value="Submit!">
-	</section>
-	</form>
+		</form>
+		<?php 
+		}
+		?>
 
-	<footer> &copy John Paul Lewis | 2018</footer>
-
+		<footer>
+			&copy John Paul Lewis | 2018
+		</footer>
+	
+	
 </body>
 </html>
